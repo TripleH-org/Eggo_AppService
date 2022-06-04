@@ -1,0 +1,18 @@
+{
+	"회원가입":"아이디, 비밀번호, 닉네임, 이메일",
+	"방식":"POST",
+	"URI":"/main/register",
+	
+	
+    "RequestBody":{
+        "userId":"userId",
+        "name":"name",
+        "password":"password",
+        "email":"email"
+    },
+
+    "ResponseBody":{
+        "result":"fail 또는 success", 
+        "message":"회원가입 실패 / (이름)님 회원가입 성공"
+    }
+}

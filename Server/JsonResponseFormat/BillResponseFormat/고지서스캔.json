@@ -1,0 +1,17 @@
+{
+	"기간별 요금":"아이디",
+	"방식":"POST",
+	"URI":"/bill/scanPhoto?file=MultipartFile사진",
+	
+    "ResponseBody":{
+        "result":"success 또는 fail",   
+        "message":"이미지 스캔 완료 / 데이터를 불러올 수 없습니다. / 이미지 스캔에 실패하였습니다.", 
+        "date":"202205",
+        "totalFee":"4000",
+        "publicFee":"4000",
+        "waterFee":"4000",
+        "waterUse":"4000",
+        "electFee":"4000",
+        "electUse":"4000"
+    }
+}

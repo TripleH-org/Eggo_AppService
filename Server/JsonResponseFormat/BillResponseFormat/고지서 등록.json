@@ -1,0 +1,22 @@
+{
+	"고지서 등록":"아이디, 날짜, 총 요금, 수도사용량, 수도요금, 전기사용량, 전기요금",
+	"방식":"POST",
+	"URI":"/bill/register",
+	
+	
+    "RequestBody":{
+        "userId":"user100",
+        "date":"202202",
+        "totalFee":"50000",
+        "waterFee":"40000",
+        "waterUse":"3000",
+        "electFee":"10000",
+        "electUse":"1000",
+        "publicFee":"10000"
+    },
+
+    "ResponseBody":{
+        "result":"fail 또는 success", 
+        "message":"등록 실패하였습니다 / 등록 완료하였습니다."
+    }
+}

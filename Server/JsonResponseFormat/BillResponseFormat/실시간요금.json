@@ -1,0 +1,11 @@
+{
+	"기간별 요금":"아이디",
+	"방식":"Get",
+	"URI":"/predict/realTimeData?region1='서울특별시'&region2='종로구'&region3='사직동'",
+	
+    "ResponseBody":{
+        "result":"success 또는 fail",   
+        "message":"실시간 요금입니다. / 데이터를 불러올 수 없습니다.", 
+        "electFee":"4000"
+    }
+}

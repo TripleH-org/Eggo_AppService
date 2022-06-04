@@ -1,0 +1,18 @@
+{
+	"고지서 조회":"아이디, 날짜",
+	"방식":"Get",
+	"URI":"/Bill/GetBill?user=user001&&date=2022-2",
+	
+    "ResponseBody":{
+        "result":"success 또는 fail",   
+        "message":"(아이디)님 고지서 조회 성공 / (아이디)님 고지서 조회 성공",
+        "userId":"userId",
+        "date":"202202",
+        "totalFee":"4000",
+        "waterFee":"3000",
+        "waterUse":"500",
+        "electFee":"1000",
+        "electUse":"200",
+        "publicFee":"4000"
+    }
+}

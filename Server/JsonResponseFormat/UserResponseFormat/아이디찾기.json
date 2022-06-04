@@ -1,0 +1,21 @@
+{
+	"아이디 찾기":"이메일",
+	"방식":"GET",
+	"URI":"/main/FindUserId?email=test@gmail.com",
+	
+    "ResponseBody":{
+        "result":"success 또는 fail",
+        "message":"아이디 찾기 성공 / 해당 이메일로 가입된 계정이 없습니다.",
+        "data":{
+            "count":3,          
+            "UserIdList":[{
+                "userId":"user001"
+            },{
+                "userId":"user003"
+            },{
+                "userId":"user004"
+            }
+            ]
+        }
+    }
+}

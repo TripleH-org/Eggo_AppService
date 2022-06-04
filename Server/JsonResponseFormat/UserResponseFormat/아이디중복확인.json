@@ -1,0 +1,13 @@
+
+
+{
+	"아이디 중복 확인":"아이디",
+	"방식":"GET",
+	"URI":"/main/checkId?userId='아이디'",
+	
+	
+    "ResponseBody":{
+        "result":"fail 또는 success",
+        "message":"이미 존재하는 아이디입니다. / 사용 가능한 아이디입니다."
+    }
+}

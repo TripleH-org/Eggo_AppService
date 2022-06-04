@@ -1,0 +1,14 @@
+{
+	"기간별 요금":"아이디",
+	"방식":"Get",
+	"URI":"/bill/pieGraph?userId=userId",
+	
+    "ResponseBody":{
+        "result":"success 또는 fail",   
+        "message":"(아이디)님 고지서 조회 성공 / 데이터가 없습니다.", 
+        "publicFee":"4000",
+        "electFee":"4000",
+        "waterFee":"4000",
+        "individualFee":"4000"
+    }
+}

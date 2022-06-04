@@ -1,0 +1,20 @@
+{
+	"로그인":"아이디, 비밀번호",
+	"방식":"POST",
+	"URI":"/main/login",
+	
+	
+    "RequestBody":{
+        "userId":"userId",
+        "password":"password",
+        "name":"name",
+        "email":"email"
+    },
+    
+    "ResponseBody":{
+        "result":"fail 또는 success",   
+        "message":"잘못된 아이디 또는 비밀번호입니다. / (이름)님 로그인 성공",
+        "email":"email",
+        "name":"name"
+    }
+}

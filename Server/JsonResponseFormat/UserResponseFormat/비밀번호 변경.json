@@ -1,0 +1,16 @@
+
+{
+	"비밀번호 변경":"아이디, 새 비밀번호",
+	"방식":"POST",
+	"URI":"/main/ChangeUserPW",
+	
+	
+    "RequestBody":{
+        "userId":"user100",
+        "password":"pw100"
+    },
+
+    "ResponseBody":{ 
+        "message":"변경이 완료되었습니다."
+    }
+}

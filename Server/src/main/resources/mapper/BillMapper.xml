@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.energysolution.mapper.BillMapper">
+	
+	<insert id="insertBill" parameterType="com.energysolution.dto.BillDTO">
+		INSERT INTO Bill(date, totalFee) VALUES (#{date},#{totalFee})
+	</insert>
+	
+	<insert id="insertDetailBill" parameterType="com.energysolution.dto.DetailBillDTO">
+		INSERT INTO detailBill(BillId, publicFee, waterFee, waterUse, electFee, electUse) VALUES (#{BillId},#{publicFee},#{waterFee},#{waterUse},#{electFee},#{electUse})
+	</insert>
+	
+	<insert id="insertPayment" parameterType="com.energysolution.dto.PaymentDTO">
+		INSERT INTO payment(UserId, BillId) VALUES (#{UserId},#{BillId})
+	</insert>
+	
+	<update id="updateBillField">
+		UPDATE ${table} SET ${Field}=#{fee} WHERE BillId = #{BillId}
+	</update>
+	
+	<update id="updateBill" parameterType="com.energysolution.dto.TotalBillDTO">
+		UPDATE Bill SET totalFee=#{totalFee} WHERE BillId = #{BillId}
+	</update>
+	
+	<update id="updateDetailBill" parameterType="com.energysolution.dto.TotalBillDTO">
+		UPDATE DetailBill SET waterFee=#{waterFee}, waterUse=#{waterUse}, electFee=#{electFee}, electUse=#{electUse}, publicFee=#{publicFee} WHERE BillId = #{BillId}
+	</update>
+		
+	<delete id="deleteBill">
+		DELETE FROM Bill WHERE BillId=#{billId}
+	</delete>
+	
+	<delete id="deleteDetailBill">
+		DELETE FROM detailBill WHERE BillId=#{billId}
+	</delete>
+	
+	<delete id="deletePayment">
+		DELETE FROM payment WHERE BillId=#{billId}
+	</delete>
+	
+	<select id="getMaxBillId" resultType="Integer">
+		SELECT MAX(BillId) FROM Bill
+	</select>
+	
+	<select id="getBill" parameterType="hashmap" resultType="com.energysolution.dto.BillDTO">
+		SELECT * FROM Bill WHERE BillId = #{BillId}
+	</select>
+	
+	<select id="getDetailBill" parameterType="hashmap" resultType="com.energysolution.dto.DetailBillDTO">
+		SELECT * FROM detailBill WHERE BillId = #{BillId}
+	</select>
+	
+	<select id="checkBill" parameterType="Integer" resultType="Integer">
+		SELECT count(*) FROM Bill WHERE BillId=#{billId} AND BillId=(SELECT BillId FROM payment WHERE BillId=#{billId}) AND BillId=(SELECT BillId FROM detailBill WHERE BillId=#{billId});
+	</select>
+	
+	<select id="checkUpdateBillField" parameterType="hashmap" resultType="Integer">
+		SELECT ${Field} FROM ${table} WHERE BillId IN (SELECT BillId FROM payment WHERE UserId=#{UserId} AND BillId = (SELECT BillId FROM Bill WHERE Date=#{date}))
+	</select>
+		
+	<select id="checkDeleteBill" parameterType="hashmap" resultType="Integer">
+		SELECT count(*) FROM Bill WHERE BillId =#{billId}
+	</select>
+	
+	<select id="checkDeleteDetailBill" parameterType="hashmap" resultType="Integer">
+		SELECT count(*) FROM detailBill WHERE BillId =#{billId}
+	</select>
+	
+	<select id="checkDeletePayment" parameterType="hashmap" resultType="Integer">
+		SELECT count(*) FROM payment WHERE BillId =#{billId}
+	</select>
+	
+	<select id="getBillId" parameterType="hashmap" resultType="Integer">
+		SELECT BillId FROM payment WHERE UserId=#{UserId} AND BillId IN (SELECT BillId FROM Bill WHERE date=#{date})
+	</select>
+	
+	<select id="getBillIdCnt" parameterType="hashmap" resultType="Integer">
+		SELECT Count(BillId) FROM payment WHERE UserId=#{UserId} AND BillId IN (SELECT BillId FROM Bill WHERE date=#{date})
+	</select>
+	
+	<select id="getRecentBillId" parameterType="String" resultType="Integer">
+		SELECT BillId FROM Bill WHERE BillId IN (SELECT BillId FROM Payment WHERE UserId=#{UserId}) ORDER BY date DESC LIMIT 1
+	</select>
+	
+	<select id="checkPaymentCnt" parameterType="String" resultType="Integer">
+		SELECT count(*) FROM payment WHERE UserId = #{UserId}
+	</select>
+	
+	<select id="checkBillDataCnt" parameterType="hashmap" resultType="Integer">
+		SELECT count(*) FROM Bill WHERE BillId IN (SELECT BillId FROM payment WHERE UserId=#{UserId}) AND date=#{date}
+	</select>
+ </mapper>

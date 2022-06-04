@@ -1,0 +1,6 @@
+게이트 순환 유닛 ( Gated Recurrent Unit, GRU)
+: LSTM의 장기 의존성 문제에 대한 해결책을 유지하면서, 은닉상태를 업데이트하는 계산을 줄임
+: 성능은 LSTM과 유사하면서 복잡했던 LSTM의 구조를 간단화
+
+- LSTM에서는 출력, 입력, 삭제 게이트라는 3개의 게이트가 존재하는 반면 GRU에서는 업데이트 게이트와 리셋 게이트 두가지 게이트만 존재
+- 케라스 지원 model.add(GRU(hidden_size, input_shape=(timesteps, input_dim)))

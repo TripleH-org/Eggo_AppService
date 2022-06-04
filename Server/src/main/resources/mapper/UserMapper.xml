@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.energysolution.mapper.UserMapper">
+	
+	<insert id="insertUser">
+		INSERT INTO User(UserId, Name, Password, Email) VALUES (#{UserId},#{Name},#{Password},#{Email})
+	</insert>
+	
+	<insert id="insertRole">
+		INSERT INTO Role(UserId, role) VALUES (#{UserId},#{role})
+	</insert>
+	
+	<select id="existUserById"  parameterType="String" resultType="Integer">
+		SELECT EXISTS (SELECT * FROM User WHERE UserId=#{UserId}) AS SUCCESS
+	</select>
+	
+	<select id="getUserPassword" parameterType="String" resultType="String">
+		SELECT Password FROM User WHERE UserId=#{UserId}
+	</select>
+	
+	<select id="getUser" parameterType="String" resultType="com.energysolution.dto.UserDTO">
+		SELECT * FROM User WHERE UserId=#{UserId}
+	</select>
+	
+	<select id="getUserRole" parameterType="String" resultType="com.energysolution.dto.UserRoleDTO">
+		SELECT * FROM role WHERE UserId=#{UserId}
+	</select>
+	
+	<select id="FindUserId" parameterType="String" resultType="String">
+		SELECT UserId FROM User WHERE Email=#{Email}
+	</select>
+	
+	<select id="FindUserPW" parameterType="hashmap" resultType="com.energysolution.dto.UserDTO">
+		SELECT * FROM User WHERE UserId=#{UserId} AND Email=#{Email}
+	</select>
+	
+	<update id="updateUser" parameterType="hashmap">
+		UPDATE User SET Password=#{newPW} WHERE UserId=#{UserId}
+	</update>
+	
+	<delete id="deleteUser">
+		DELETE FROM User WHERE UserId=#{UserId}
+	</delete>
+	
+	<select id="checkUser" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) FROM User WHERE UserId=#{UserId}
+	</select>
+	
+	<select id="checkUserByIdEmail" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) FROM User WHERE UserId=#{UserId} AND Email=#{Email}
+	</select>
+	
+	<select id="getReqData" resultType="map">
+		SELECT 
+			* FROM 
+		DAY_PREDICTED_USAGE LIMIT 1000
+	</select>
+	
+</mapper>

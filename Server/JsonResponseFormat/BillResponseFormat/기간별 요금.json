@@ -1,0 +1,39 @@
+{
+	"기간별 요금":"아이디",
+	"방식":"Get",
+	"URI":"/bill/getDataList?userId=userId",
+	
+	
+    "ResponseBody":{
+        "result":"success 또는 fail",   
+        "message":"(아이디)님 고지서 조회 성공 / (아이디)님 고지서 조회 실패", 
+        "dataList":[{
+        	"userId":"userId",			
+            "date":"202110",
+            "totalFee":"4000",
+            "publicFee":"4000",
+            "waterFee":"4000",
+            "waterUse":"4000",
+            "electFee":"4000",
+            "electUse":"4000"
+            },{
+        	"userId":"userId",
+            "date":"202109",
+            "totalFee":"4000",
+            "publicFee":"4000",
+            "waterFee":"4000",
+            "waterUse":"4000",
+            "electFee":"4000",
+            "electUse":"4000"
+            },{
+        	"userId":"userId",
+            "date":"202108",
+            "totalFee":"4000",
+            "publicFee":"4000",
+            "waterFee":"4000",
+            "waterUse":"4000",
+            "electFee":"4000",
+            "electUse":"4000"
+            }]
+        }
+    }

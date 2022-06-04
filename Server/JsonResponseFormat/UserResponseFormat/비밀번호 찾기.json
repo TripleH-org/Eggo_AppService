@@ -1,0 +1,12 @@
+
+{
+	"비밀번호 찾기":"아이디, 이메일",
+	"방식":"GET",
+	"URI":"/main/FindUserPW?id=user001&&email=test@gmail.com",
+	
+    "ResponseBody":{
+    	"result":"success 또는 fail",
+        "message":"이메일로 해당 아이디의 임시 비밀번호가 전송되었습니다. / 존재하지 않는 아이디 또는 이메일입니다.",
+        "userId":"userId"
+    }
+}
